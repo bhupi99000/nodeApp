@@ -1,0 +1,41 @@
+<section id="products" class="col-lg-6">
+        <h4>Create New Product</h4>
+
+        <form class="form-horizontal" ng-submit="onSubmit()">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Category:</label>
+                <dropdown list-data="catList" selected-item="selectedItem"></dropdown>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cat_name">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="Enter Product Name" name="prd_name" ng-model="prdName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cat_desc">Price:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter Price" name="prd_price" ng-model="prdPrice">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cat_desc">Discount:</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" placeholder="Enter Discount" name="prd_discount" ng-model="prdDiscount">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="cat_desc">Description:</label>
+                <div class="col-sm-10">
+                    <!--                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">-->
+                    <textarea class="form-control" placeholder="Enter Description" name="prd_desc" ng-model="prdDesc"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </section>

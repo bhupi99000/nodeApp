@@ -1,0 +1,33 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th ng-repeat="(header, value) in listData[0]">{{header}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in listData">
+<!--
+                <td ng-repeat="x in item">
+                    {{x}}
+                    <span ng-if="x != 'Product Name'">
+                        
+                    </span>
+                    <span ng-if="x == 'Product Name'">
+                        
+                    </span>
+                </td>
+
+-->
+                <td><span>{{item['Product ID']}}</span></td>
+                <td><span>{{item['Product Name']}}</span></td>
+                <td><span>{{item['Category ID']}}</span></td>
+                <td><span>{{item['Price']}}</span></td>
+                <td><span>{{item['Discount']}}</span></td>
+                <td><span>{{item['Product Description']}}</span></td>
+                <td><span>{{item['Category']}}</span></td>
+                <td><span>{{item['Category Description']}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

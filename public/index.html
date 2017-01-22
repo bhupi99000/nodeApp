@@ -1,0 +1,38 @@
+<!Doctype HTML>
+<html ng-app="myshop">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>My Shop</title>
+        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    </head>
+    <body>
+        <div class="container-fluid">
+            <ui-view></ui-view>
+        </div>
+        
+        <!-- Vendor Dependencies -->
+        <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+        <script type="text/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+        
+        
+        <!-- App Dependencies -->
+        <script type="text/javascript" src="javascripts/adminModule/controller/index.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/controller/adminCtrl.js"></script>
+        
+        <script type="text/javascript" src="javascripts/adminModule/directive/index.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/directive/dropdown.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/directive/newCatDir.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/directive/newPrdDir.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/directive/listDir.js"></script>
+        
+        <script type="text/javascript" src="javascripts/adminModule/service/index.js"></script>
+        <script type="text/javascript" src="javascripts/adminModule/service/dataService.js"></script>
+        
+        <script type="text/javascript" src="javascripts/adminModule/index.js"></script>
+                
+        <script type="text/javascript" src="javascripts/main.js"></script>
+    </body>
+</html>
