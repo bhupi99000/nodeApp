@@ -13,11 +13,6 @@
         $scope.selectedItem = '';
 //        $scope.catList = [];     //to populate the dropdown while creating new product.
         
-        $scope.prdName = '';
-        $scope.prdPrice = '';
-        $scope.prdDiscount = '';
-        $scope.prdDesc = '';
-        
         $scope.createCategory = function(){
             var ajaxPromise = dataService.sendReceiveData({
                 url: '/create_category',
@@ -37,17 +32,27 @@
             });
         };
         
-        $scope.createProduct = function(){
+        $scope.createProduct = function(formData){
             debugger;
             var ajaxPromise = dataService.sendReceiveData({
                 url: '/createNewProduct',
                 method: 'POST',
-                data:{
-                    catId: $scope.selectedItem['id'],
-                    name: $scope.prdName,
-                    price: $scope.prdPrice,
-                    discount: $scope.prdDiscount,
-                    desc: $scope.prdDesc
+                data:formData,
+                special:{
+//                    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+                    headers: {'Content-Type': undefined},
+                    eventHandlers: {
+                        progress: function(c) {
+                            console.log('Progress -> ' + c);
+                            console.log(c);
+                        }
+                    },
+                    uploadEventHandlers: {
+                        progress: function(e) {
+                            console.log('UploadProgress -> ' + e);
+                            console.log(e);
+                        }
+                    }
                 }
             });  
             

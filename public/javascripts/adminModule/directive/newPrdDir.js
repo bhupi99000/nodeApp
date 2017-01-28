@@ -7,18 +7,23 @@
             restrict: 'EA',
             scope: {
                 catList:'=',
-                selectedItem:'=',
-                prdName:'=',
-                prdPrice:'=',
-                prdDiscount:'=',
-                prdDesc:'=',
-                onSubmit:'&'
+                onSubmit:'='
             },
             templateUrl: 'javascripts/adminModule/view/newPrd.html',
             replace: true,
             link: function(scope, element, attrs){
-//                debugger;
-            }
+                element.on('submit', function(evt){
+                    var formData = new FormData(evt.target);
+                    scope.onSubmit(formData);
+                });
+            },
+            controller: ['$scope', function($scope){
+                $scope.prdImgs = [];
+                $scope.selectedItem = '';
+                $scope.onFileNameChanged = function(element){
+                        $scope.prdImgs = element.files;
+                };
+            }]
         }
         return ddo;
     }

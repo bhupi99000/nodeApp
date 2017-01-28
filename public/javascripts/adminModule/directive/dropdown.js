@@ -26,11 +26,16 @@
 //                debugger;
             },
             controller: ['$scope', function($scope){
-                $scope.defaultSel = $scope.listData[0];
                 $scope.onChange = function(idx){
-                    debugger;
                     $scope.selectedItem = $scope.listData[idx];                    
                 };
+                
+                var catListWatcher = $scope.$watch('listData', function(newVal, oldVal){
+                    if(newVal[0]){
+                        $scope.selectedItem = newVal[0];
+                        catListWatcher();     
+                    }
+                });
             }]
         }
         return ddo;

@@ -5,11 +5,15 @@
     function dataService($http){
         var serviceObj = {
             sendReceiveData: function(config){
-                return $http({
+                var payload = {
                     url: config.url,
                     method: config.method,
                     data: config.data
-                });
+                };
+                if(config.special){
+                    angular.extend(payload, config.special);
+                }
+                return $http(payload);
             }
         };
         
