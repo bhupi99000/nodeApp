@@ -18,6 +18,12 @@
                     var formData = new FormData(evt.target);
                     scope.onSubmit(formData);
                 });
+
+//                if(attrs.type == 'number'){
+//                    ngModel.$formatters.push(function(value){
+//                        return parseFloat(value);
+//                    });
+//                }
             },
             controller: ['$scope', function($scope) {
                 $scope.prdImgs = [];
