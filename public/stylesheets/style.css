@@ -7,4 +7,11 @@ a {
   color: #00B7FF;
 }
 
+.displayShow{
+    display: block;
+}
+
+.displayHide{
+    display: none;
+}
 

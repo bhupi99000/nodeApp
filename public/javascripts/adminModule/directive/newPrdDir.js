@@ -12,7 +12,7 @@
                 editPrd: '='
             },
             templateUrl: 'javascripts/adminModule/view/newPrd.html',
-            replace: true,
+            replace: false,
             link: function(scope, element, attrs) {
                 element.on('submit', function(evt) {
                     var formData = new FormData(evt.target);

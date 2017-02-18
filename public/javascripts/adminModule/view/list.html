@@ -10,7 +10,7 @@
         <div class="col-sm-2 col-xs-2">Caregory Description</div>
     </div>
     <div class="row" ng-repeat="item in listData" track by $index>
-        <div class="col-sm-12 col-xs-12" ng-click="selected = $index" ng-class="do-hide">
+        <div class="col-sm-12 col-xs-12" ng-click="showEditableRegion($index)">
             <div class="col-sm-1 col-xs-1">
                 <div>{{item['Product ID']}}</div>
             </div>
@@ -36,8 +36,8 @@
                 <div>{{item['Category Description']}}</div>
             </div>
         </div>
-        <div class="col-sm-12 col-xs-12">
-            <new-prd-dir mode="edit" edit-prd="item" ng-class="{visible : $index==selected}"></new-prd-dir>
+        <div class="col-sm-12 col-xs-12" class="displayHide" ng-show="selectedIndex===$index">
+            <div new-prd-dir mode="edit" edit-prd="item" ></div>
         </div>
     </div>
 </div>
