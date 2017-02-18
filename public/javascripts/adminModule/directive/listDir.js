@@ -12,7 +12,12 @@
             replace: true,
             link: function(scope, element, attrs){
 //                debugger;
-            }
+            },
+            controller: ['$scope', function($scope){
+                $scope.showEditableRegion = function() {
+                    debugger;
+                };
+            }]
         }
         return ddo;
     }

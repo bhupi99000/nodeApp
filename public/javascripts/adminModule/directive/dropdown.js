@@ -30,10 +30,10 @@
                     $scope.selectedItem = $scope.listData[idx];                    
                 };
                 
-                var catListWatcher = $scope.$watch('listData', function(newVal, oldVal){
+                var listData = $scope.$watch('listData', function(newVal, oldVal){
                     if(newVal[0]){
                         $scope.selectedItem = newVal[0];
-                        catListWatcher();     
+                        listData();     
                     }
                 });
             }]
