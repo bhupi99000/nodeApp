@@ -1,4 +1,5 @@
 var express = require('express');
+var Q = require('q');
 var router = express.Router();
 var dataProvider = require('../lib/dao/pool.js');
 var fileUploader = require('../lib/util/fileUploader');
@@ -71,13 +72,72 @@ router.post('/createNewProduct', function(req, res, next){
 });
 
 router.get('/getAllProductList', function(req, res, next){
-    var q = "SELECT prd.id as 'Product ID', prd.name as 'Product Name', prd.cat_id as 'Category ID', prd.price as 'Price', prd.Discount as 'Discount', prd.Description as 'Product Description', cat.name as 'Category', cat.cat_description as 'Category Description' FROM product as prd, category as cat WHERE prd.cat_id=cat.id ORDER BY prd.id";
+    var q1 = `SELECT prd.id as 'Product ID', prd.name as 'Product Name', 
+    prd.cat_id as 'Category ID', prd.price as 'Price', prd.Discount as 'Discount', 
+    prd.Description as 'Product Description', cat.name as 'Category', 
+    cat.cat_description as 'Category Description' 
+    FROM product as prd, category as cat 
+    WHERE prd.cat_id=cat.id ORDER BY prd.id`;
 
-    dataProvider(q, function(results, fields){
-        var obj = mysqlToJson(results);
-        res.json(obj);
+    // dataProvider(q, function(results, fields){
+    //     var obj = mysqlToJson(results);
+    //     // res.json(obj);
+    //     return Q.promise
+    // });
+
+    var q2 = `select prd_img.id, prd_img.name, prd_img.path, product.id 
+    from prd_img, product 
+    where prd_img.product_id=product.id`;
+
+    getResults(q1, q2, function(data){
+        res.json(data);
     });
+
 });
+
+function getResults(q1, q2, callback){
+    var res1 = (function(){
+        return Q.Promise(function(resolve, reject, notify){
+            dataProvider(q1, function(results, fields){
+                var obj = mysqlToJson(results);
+                resolve(obj);
+            });
+        });
+    }());
+
+    var res2 = (function(){
+        return Q.Promise(function(resolve, reject, notify){
+            dataProvider(q2, function(results, fields){
+                var obj = mysqlToJson(results);
+                resolve(obj);
+            });
+        });
+    }());
+
+    Q.all([res1, res2]).then(function(data){
+        console.log("working here");
+
+        var prods = data[0];
+        var imgs = data[1];
+        var result = [];
+
+        prods.forEach(function(prdItem, index){
+            imgs.forEach(function(imgItem){
+                
+                if(prdItem['Product ID'] == imgItem['id']){
+                    var obj = prdItem;
+                    obj['imgName'] = imgItem.name;
+                    obj['imgPath'] = imgItem.path;
+                    prdItem = obj;
+                }
+                
+            });
+        });
+        console.log("obj ;;;; ");
+        console.log(prods);
+        callback(prods);
+    });
+}
 
 router.get('/getAllCategories', function(req, res, next){
     var q = 'SELECT * FROM `category`';
@@ -86,5 +146,9 @@ router.get('/getAllCategories', function(req, res, next){
         res.send(results);
     });
 });
+
+function mergeResults(arr1, arr2){
+
+}
 
 module.exports = router;
