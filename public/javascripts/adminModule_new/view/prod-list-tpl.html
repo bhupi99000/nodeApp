@@ -1,0 +1,13 @@
+<section>
+    <button>Create New Product</button>
+    <table>
+        <tr ng-repeat="item in data track by $index" data-id="{{item.id}}">
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.discount}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.path}}</td>
+            <td><img ng-src="{{item.path}}" /></td>
+        </tr>
+    </table>
+</section>

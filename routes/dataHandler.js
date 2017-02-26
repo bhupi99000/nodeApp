@@ -149,20 +149,26 @@ router.get('/getAllCategories', function(req, res, next){
 });
 
 router.post('/editCategory', function(req, res, next){
-   // UPDATE `category` SET `name` = 'default_category1' WHERE `category`.`id` = 2;
     var id = req.body.id;
     var name = req.body.name;
     var desc = req.body.desc;
-// UPDATE `category` SET `name` = 'default_category 2', `cat_description` = 'cat desc 2' WHERE `category`.`id` = 2;
     var q = 'UPDATE `category` SET `name` = "'+(name)+'", `cat_description` = "'+(desc)+'" WHERE `category`.`id` = '+id;
     dataProvider(q, function(results, fields){
         debugger;
         res.send(results);
     });
-    
+});
 
+router.get('/getProductList', function(req, res, next){
+    var q = `select * from product
+            left join prd_img
+            on product.id=prd_img.product_id
+            where product.cat_id=`+req.query.catId;
 
-
+    dataProvider(q, function(results, fields){
+        var obj = mysqlToJson(results);
+        res.send(results);
+    });
 });
 
 function mergeResults(arr1, arr2){

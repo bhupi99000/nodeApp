@@ -15,7 +15,6 @@
         };
         
         $scope.createNewCategory = function(){
-            debugger;  
             var popup_config = angular.copy({
                templateUrl: 'javascripts/adminModule_new/view/edit-cat-tpl.html',
                controller: ['$scope', '$uibModal', '$uibModalInstance', function($scope, $uibModal, $uibModalInstance){
@@ -79,8 +78,9 @@
             $uibModal.open(popup_config);
         };
         
-        $scope.setActive = function(menuItem) {
+        $scope.selectCategory = function(menuItem) {
             $scope.activeMenu = menuItem;
+            $scope.$emit('updateProductList', menuItem.id);
         };
     };
 }());

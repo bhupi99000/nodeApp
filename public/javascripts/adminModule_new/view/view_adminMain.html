@@ -3,19 +3,12 @@
         <h1>This is admin header section</h1>
     </header>
     <div class="row">
-        <button ng-click="showModal()" popup-dir config="popupConfig">Show Modal</button>
         <section class="cat-list-panel col-md-3">
             <cat-list-dir data="catListData"></cat-list-dir>
         </section>
         <section class="product-list-panel col-md-9">
-            <ul>
-                <li>product 1</li>
-                <li>product 2</li>
-                <li>product 3</li>
-                <li>product 4</li>
-            </ul>
+            <prod-list-dir data="prodListData"></prod-list-dir>
         </section>
-        
     </div>
     <footer class="admin-footer">
         <h6>footer area</h6>

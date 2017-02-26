@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 18, 2017 at 06:40 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.21
+-- Host: localhost
+-- Generation Time: Feb 26, 2017 at 07:50 PM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,13 +37,15 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `name`, `cat_description`) VALUES
-(2, 'default_category', 'cat desc'),
-(3, 'category2', 'category 2 description'),
+(2, 'default_category 222', 'cat desc 4'),
+(3, 'category2 edited', 'category 2 description edited'),
 (4, 'category 3', 'category 3 description'),
 (6, 'category 5', 'category 5 description'),
 (7, 'Kaan ka', 'kaan me pehanne ka'),
 (8, 'Earings', 'Earings description'),
-(9, 'category 6', 'category 6 description');
+(9, 'category 6', 'category 6 description'),
+(10, 'null', 'null'),
+(11, 'new category from ui 123', 'new category description');
 
 -- --------------------------------------------------------
 
@@ -52,9 +54,9 @@ INSERT INTO `category` (`id`, `name`, `cat_description`) VALUES
 --
 
 CREATE TABLE `prd_img` (
-  `id` int(11) NOT NULL,
+  `img_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `img_name` varchar(255) NOT NULL,
   `path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -62,7 +64,7 @@ CREATE TABLE `prd_img` (
 -- Dumping data for table `prd_img`
 --
 
-INSERT INTO `prd_img` (`id`, `product_id`, `name`, `path`) VALUES
+INSERT INTO `prd_img` (`img_id`, `product_id`, `img_name`, `path`) VALUES
 (3, 73, 'prd_imgs-1485612786458.jpg', 'APP_DATA\\prd_imgs-1485612786458.jpg'),
 (4, 73, 'prd_imgs-1485612786461.jpg', 'APP_DATA\\prd_imgs-1485612786461.jpg'),
 (5, 74, 'prd_imgs-1485687015900.jpg', 'APP_DATA\\prd_imgs-1485687015900.jpg'),
@@ -146,7 +148,7 @@ ALTER TABLE `category`
 -- Indexes for table `prd_img`
 --
 ALTER TABLE `prd_img`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`img_id`),
   ADD KEY `product_id` (`product_id`);
 
 --
@@ -164,12 +166,12 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `prd_img`
 --
 ALTER TABLE `prd_img`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `img_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `product`
 --

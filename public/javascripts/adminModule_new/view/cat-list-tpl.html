@@ -5,7 +5,7 @@
             ng-class="{active : activeMenu === item}"
             ng-repeat="item in data track by $index" 
             data-id="{{item.id}}"
-            ng-click="setActive(item)"
+            ng-click="selectCategory(item)"
             >
             {{item.name}} 
             <span class="glyphicon glyphicon-pencil" popup-dir config="popupConfig" ng-click="editCatItem(item)"></span>

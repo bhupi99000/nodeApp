@@ -1,10 +1,10 @@
 (function(){
     'use strict';
-    angular.module('myshop.adminModule.directive').directive('catListDir', [catListHandler]);
-    function catListHandler(){
+    angular.module('myshop.adminModule.directive').directive('prodListDir', [prodListHandler]);
+    function prodListHandler(){
         var ddo = {
             restrict: 'EA',
-            templateUrl: 'javascripts/adminModule_new/view/cat-list-tpl.html',
+            templateUrl: 'javascripts/adminModule_new/view/prod-list-tpl.html',
             scope: {
                 data: '='
             },
@@ -12,8 +12,8 @@
             link: function(scope, element, attrs){
 
             },
-            controller: 'catListCtrl'
+            controller: 'prodListCtrl'
         };
         return ddo;
-    };
+    }
 }());
