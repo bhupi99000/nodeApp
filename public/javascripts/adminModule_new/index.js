@@ -2,9 +2,10 @@
     'use strict';
     angular.module('myshop.adminModule', [
         'myshop.adminModule.controller',
-//        'myshop.adminModule.service',
-//        'myshop.adminModule.directive',
-        'ui.router'
+        'myshop.adminModule.service',
+        'myshop.adminModule.directive',
+        'ui.router',
+        'myshop.sharedModule'
     ])
     .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
         $stateProvider.state('admin', {

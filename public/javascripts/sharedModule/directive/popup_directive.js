@@ -3,7 +3,38 @@
     angular.module('myshop.sharedModule.directive').directive('popupDir', [dir_popupHandler]);
     function dir_popupHandler(){
         var ddo = {
-            
+            restrict: 'EA',
+            scope:{
+                config: '='
+            },
+            link: function(scope, element, attrs){
+
+            },
+            controller: ['$scope', '$uibModal', function($scope, $uibModal){
+               $scope.$on('showModal', function(){
+                    $uibModal.open({
+                        ariaLabelledBy: 'modal-title',
+                          ariaDescribedBy: 'modal-body',
+                          templateUrl: function(){
+                              if($scope.config.tplUrl){
+                                  return $scope.config.tplUrl;
+                              }else{
+                                  if($scope.config.mode === 'form'){
+                                      return 'javascripts/sharedModule/view/form-popup-tpl.html';
+                                  }else if($scope.config.mode === 'msg'){
+                                      return 'javascripts/sharedModule/view/msg-popup-tpl.html';
+                                  }
+                              }
+                              
+                          },
+                          controller: $scope.config.ctrl,
+                          size: $scope.config.size,
+                          appendTo: angular.element($scope.config.elm)
+                    });
+               });
+               
+               
+            }]
         };
         return ddo;
     }

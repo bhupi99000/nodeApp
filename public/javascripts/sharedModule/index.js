@@ -1,9 +1,9 @@
 (function(){
     'use strict';
     angular.module('myshop.sharedModule', [
-//        'myshop.adminModule.controller',
-//        'myshop.adminModule.service',
         'myshop.sharedModule.directive',
-        'ui.router'
+        'myshop.sharedModule.controller',
+        'myshop.sharedModule.service',
+        'ui.bootstrap'
     ]);
 }());
