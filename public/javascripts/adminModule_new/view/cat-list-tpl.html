@@ -1,0 +1,17 @@
+<div>
+    <div class="list-group" ng-if="data.length > 0">
+        <button ng-click="createNewCategory()">Create New Category</button>
+        <a class="list-group-item" 
+            ng-class="{active : activeMenu === item}"
+            ng-repeat="item in data track by $index" 
+            data-id="{{item.id}}"
+            ng-click="setActive(item)"
+            >
+            {{item.name}} 
+            <span class="glyphicon glyphicon-pencil" popup-dir config="popupConfig" ng-click="editCatItem(item)"></span>
+        </a>
+    </div>
+    <div ng-if="data.length == 0">
+        <button ng-click="createNewCategory()">Create New Category</button>
+    </div>
+</div>

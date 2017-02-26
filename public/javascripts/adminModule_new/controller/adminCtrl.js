@@ -1,45 +1,38 @@
 (function(){
     'use strict';
     angular.module('myshop.adminModule.controller')
-        .controller('adminCtrl', ['$scope', '$uibModal', '$document', 'dataService',  ctrlHandler]);
+        .controller('adminCtrl', ['$scope', '$uibModal', '$document', 'catService',  ctrlHandler]);
     
-    function ctrlHandler($scope, $uibModal, $document, dataService){        
-        $scope.popupConfig = {
-           //mode: 'form/msg',
-           tplUrl: 'javascripts/adminModule_new/view/edit-tpl.html',
-           ctrl: ['$scope', '$uibModal', '$uibModalInstance', function($scope, $uibModal, $uibModalInstance){
-                  $scope.ok = function () {
-                    $uibModalInstance.close();
-                  };
-
-                  $scope.cancel = function () {
-                    $uibModalInstance.dismiss('cancel');
-                  };
-           }],
-           size: 'sm',
-           elm: 'body'
-       };
-        
+    function ctrlHandler($scope, $uibModal, $document, catService){        
         $scope.showModal = function(config){
             $scope.$broadcast('showModal');
         };
+        
+        $scope.catListData = null;
+        
         
        $scope.init = function(){
            $scope.getAllCategories();
        };
         
        $scope.getAllCategories = function(){
-           var promise = dataService.getCategories();
-           promise.then(function(data){
-               debugger;               
-           }, function(err){
+           catService.getAllCategories(function(err, catData){
+               if(err){
+                   console.err(err);
+                   return;
+               }
                debugger;
+               $scope.catListData = catData;
            });
        };
         
        $scope.createNewCategory = function(){
            
        };
+        
+       $scope.$on('updateCategory', function(){
+          $scope.getAllCategories(); 
+       });
         
        $scope.init();  //initializing the view
     }
