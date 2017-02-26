@@ -3,6 +3,7 @@ var Q = require('q');
 var router = express.Router();
 var dataProvider = require('../lib/dao/pool.js');
 var fileUploader = require('../lib/util/fileUploader');
+var path = require('path');
 
 function mysqlToJson(results){
     var json = [];
