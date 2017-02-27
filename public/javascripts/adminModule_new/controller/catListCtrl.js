@@ -80,6 +80,7 @@
         
         $scope.selectCategory = function(menuItem) {
             $scope.activeMenu = menuItem;
+            catService.setSelectedCategory(menuItem);
             $scope.$emit('updateProductList', menuItem.id);
         };
     };

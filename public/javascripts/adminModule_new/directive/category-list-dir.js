@@ -10,7 +10,12 @@
             },
             replace: true,
             link: function(scope, element, attrs){
-
+                var data_watch = scope.$watch('data', function(newVal, oldVal){
+                    if(newVal && newVal.length > 0){
+                        scope.selectCategory(newVal[0]);
+                        data_watch();
+                    }
+                });
             },
             controller: 'catListCtrl'
         };

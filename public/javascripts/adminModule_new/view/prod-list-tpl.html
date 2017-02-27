@@ -1,6 +1,6 @@
 <section>
-    <button>Create New Product</button>
-    <table>
+    <button ng-click="createNewProduct()">Create New Product</button>
+    <table class="table">
         <tr ng-repeat="item in data track by $index" data-id="{{item.id}}">
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>

@@ -3,7 +3,7 @@
     angular.module('myshop.adminModule.service').factory('catService', ['dataService', '$http', '$q', catServiceHandler]);
     function catServiceHandler(dataService, $http, $q){
         var cacheData = {};
-        
+        var selectedCategory = {};
         var serviceObj = {
             getAllCategories: function(callback){
 //                if(cacheData.catList){
@@ -24,8 +24,15 @@
             },
             
             createCategory: function(catObj){
-                debugger;
                 return $http.post('/create_category', catObj);
+            },
+            
+            setSelectedCategory: function(catObj){
+                selectedCategory = catObj;
+            },
+            
+            getSelectedCategory: function(){
+                return selectedCategory;
             }
         };
         return serviceObj;

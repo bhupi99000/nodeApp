@@ -1,0 +1,63 @@
+<div class="modal-title" id="modal-title">
+    <h3>{{title}}</h3>
+</div>
+<div class="modal-body">
+<!--
+    <div class="form-group">
+        <label for="catName">Category Name:</label>
+        <input type="text" name="catName" class="form-control" ng-model="catName">
+    </div>
+    
+    <div class="form-group">
+        <label for="catDesc">Category Name:</label>
+        <textarea type="text" name="catDesc" class="form-control" ng-model="catDesc"></textarea>
+    </div>    
+-->
+	<form class="form-horizontal" name="prdForm">
+         <div class="form-group">
+             <label class="control-label col-sm-2" for="cat_name">Name:</label>
+             <div class="col-sm-10">
+             	 <input type="text" class="form-control" name="cat_id" ng-model="catId" />
+                 <input type="text" class="form-control" placeholder="Enter Product Name" name="prd_name" ng-model="prdName">
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="control-label col-sm-2" for="prd_price">Price:</label>
+             <div class="col-sm-10">
+                 <input type="number" class="form-control" placeholder="Enter Price" name="prd_price" ng-model="prdPrice">
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="control-label col-sm-2" for="prd_discount">Discount:</label>
+             <div class="col-sm-10">
+                 <input type="number" class="form-control" placeholder="Enter Discount" name="prd_discount" ng-model="prdDiscount">
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="control-label col-sm-2" for="prd_desc">Description:</label>
+             <div class="col-sm-10">
+                 <!--                    <input type="password" class="form-control" id="pwd" placeholder="Enter password">-->
+                 <textarea class="form-control" placeholder="Enter Description" name="prd_desc" ng-model="prdDesc"></textarea>
+             </div>
+         </div>
+         <div class="form-group">
+             <label class="control-label col-sm-2" for="prd_imgs">Product Image: </label>
+             <div class="col-sm-10">
+                 <label class="btn btn-default btn-file">
+                     Browse <input type="file" name="prd_imgs" style="display: none;" ng-model="prdImgs" multiple="multiple" onchange="angular.element(this).scope().onFileNameChanged(this)" />
+                 </label>
+             </div>
+         </div>
+         <!-- <div class="form-group">
+             <div class="col-sm-offset-2 col-sm-10">
+                 <button type="button" ng-click="ok()" class="btn btn-default">Save</button>
+                 <button type="button" ng-click="cancel()">Cancel</button>
+             </div>
+         </div> -->
+   </form>
+
+</div>
+<div class="modal-footer">
+    <button ng-click="ok($event, 'prdForm')">Save</button>
+    <button ng-click="cancel()">Cancel</button>
+</div>

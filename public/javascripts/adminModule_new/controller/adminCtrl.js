@@ -27,12 +27,10 @@
         
        $scope.getProductList = function(catId){
            prodService.getProductList(catId, function(err, prodData){
-               debugger;
                if(err){
                    console.log(err);
                    return;
                }
-               debugger;
                $scope.prodListData = prodData;
            });
        };

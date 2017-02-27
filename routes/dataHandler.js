@@ -39,7 +39,7 @@ router.post('/createNewProduct', function(req, res, next){
         }
         var request = req;
         debugger;
-        var catId = req.body.cat_sel_item ? req.body.cat_sel_item : null;
+        var catId = req.body.cat_id ? req.body.cat_id : null;
         var name = req.body.prd_name ? req.body.prd_name : null;
         var price = req.body.price ? req.body.price : null;
         var discount = req.body.prd_discount ? req.body.prd_discount : null;
@@ -51,7 +51,7 @@ router.post('/createNewProduct', function(req, res, next){
         dataProvider(q, function(results, fields){
             debugger;
             // res.send(results);
-            var q = 'INSERT INTO `prd_img`(`product_id`, `name`, `path`) VALUES ?';
+            var q = 'INSERT INTO `prd_img`(`product_id`, `img_name`, `path`) VALUES ?';
             var values = [];
             req.files.forEach(function(item){
                 var arr = [];

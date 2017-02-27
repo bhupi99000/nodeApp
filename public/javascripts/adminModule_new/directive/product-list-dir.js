@@ -10,7 +10,10 @@
             },
             replace: true,
             link: function(scope, element, attrs){
-
+//            	element.on('submit', function(evt) {
+//                    var formData = new FormData(evt.target);
+//                    scope.onSubmit(formData);
+//                });
             },
             controller: 'prodListCtrl'
         };
