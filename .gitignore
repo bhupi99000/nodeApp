@@ -55,3 +55,13 @@ jspm_packages
 # removing vscode files
 .vscode
 /nbproject/private/
+
+.project
+.settings
+.settings/*
+.vscode
+.vscode/*
+.git
+.git/*
+
+
